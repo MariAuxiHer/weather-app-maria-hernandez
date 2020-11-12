@@ -1,0 +1,194 @@
+hr {
+    border: 1px solid #8675a9;
+  }
+  
+  .most-external-border {
+    margin: 18%;
+    border: 2px solid #c3aed6;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+  }
+  
+  .header-main-title {
+    font-size: 2.4vw;
+    text-align: center;
+    padding: 25px 10px 15px;
+    font-family: "Courgette", cursive;
+    color: #8675a9;
+  }
+  
+  .fa-city {
+    margin: 10% 4% 0% 40%;
+    font-size: 200%;
+    color: #8675a9;
+  }
+  /*.col-8 {
+    display: inline;
+  }
+  #submit-city {
+    display: inline;
+  }*/
+  
+  .submit-in-line {
+    display: inline;
+  }
+  
+  #enter-city {
+    margin: 0% 0% 0% 20%;
+    width: 40%;
+    padding: 8px;
+    border: 2px solid #8675a9;
+    font-size: 1.2vw;
+  }
+  
+  input[type="search"]:focus {
+    border: 3px solid #555;
+  }
+  
+  #search-button {
+    /*margin: 2% 5% 0% 25%;*/
+    margin: 0% 0% 0% 2%;
+    width: 28%;
+    padding: 8px 12px;
+    border: 1px solid #8675a9;
+    background: #c3aed6;
+    color: #3b2e5a;
+    font-size: 1.2vw;
+    font-weight: bold;
+  }
+  
+  #location-button {
+    font-size: 1.2vw;
+    padding: 8px 12px;
+    border: 1px solid #8675a9;
+    background: #c3aed6;
+    color: #3b2e5a;
+    font-weight: bold;
+  }
+  
+  #current-info {
+    margin: 30px 20px 20px;
+    border: 2px solid #8675a9;
+    border-radius: 5px;
+  }
+  
+  #city-current-info {
+    margin: 5%;
+    border: 2px solid #8675a9;
+    border-radius: 48%;
+    text-align: center;
+  }
+  
+  .city {
+    margin: 5.5% 0% 2%;
+    font-size: 2vw;
+    color: #8675a9;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  .current-time-weather {
+    font-size: 1.5vw;
+    margin-bottom: 0;
+    color: #3b2e5a;
+    font-family: "Nanum Gothic", sans-serif;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  .current-temperture {
+    font-size: 2vw;
+    margin: 2% 0% 5%;
+    color: #8675a9;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  #farenheit {
+    display: inline;
+  }
+  #more-detailed-info {
+    margin: 5%;
+    border: 2px solid #8675a9;
+    font-size: 1.2vw;
+    color: #3b2e5a;
+    border-radius: 5px;
+    padding: 3%;
+    font-family: "Nanum Gothic", sans-serif;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  .detailed-information {
+    margin: 20px;
+    border: 2px solid #8675a9;
+    border-radius: 5px;
+    font-size: 0.9vw;
+    font-family: "Nanum Gothic", sans-serif;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  .weather-throughout-the-day {
+    font-size: 2vw;
+    text-align: center;
+    padding: 1% 0 0.2%;
+    color: #8675a9;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  #row-detailed-information {
+    padding: 0 1% 2% 3%;
+    color: #3b2e5a;
+  }
+  
+  .five-days-forecast {
+    margin: 20px 20px 30px;
+    border: 2px solid #8675a9;
+    border-radius: 5px;
+    font-size: 0.9vw;
+    font-family: "Nanum Gothic", sans-serif;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  .forecast-title {
+    font-size: 2vw;
+    text-align: center;
+    padding: 1% 0 0.2%;
+    color: #8675a9;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  #row-forecast {
+    padding: 0 1% 2% 3%;
+    color: #3b2e5a;
+  }
+  
+  #smaller-numbers {
+    font-size: 0.8vw;
+  }
+  
+  .fa-cloud-moon {
+    color: #cbeaed;
+  }
+  
+  .fa-moon {
+    color: #cbeaed;
+  }
+  
+  .fa-cloud-sun {
+    color: #ffffdd;
+  }
+  
+  .fa-cloud-sun-rain {
+    color: #cbeaed;
+  }
+  
+  .fa-sun {
+    color: #faf0af;
+  }
+  
+  /*div[class*="col"] {
+    background: blue;
+  }*/
+  
+  @media (max-width: 768px) {
+    /* For mobile phones: */
+    div[class*="col"] {
+      width: 50%;
+    }
+  }

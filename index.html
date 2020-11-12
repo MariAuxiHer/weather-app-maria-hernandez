@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Maria Hernandez</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/63a26a0cab.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		
+
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div class="container">
+       <div class="most-external-border">
+            <!-- <div class="header-main-title">-->
+                <h1 class="header-main-title">
+                   Real Time - Weather Report
+                </h1>
+
+           <!--</div>-->
+<hr>
+
+
+<div class="row">
+    <div class="col-2">
+<i class="fas fa-city"></i> 
+    </div>
+
+<div class="col-7">
+		<div class ="submit-in-line">
+	<form id="submit-city">
+    
+		
+<input type="search" placeholder="Type a City" id="enter-city">
+
+    
+<input type="submit" value="Search" id="search-button">
+	</form>
+</div>
+</div>
+
+<div class="col-2">
+
+	<button id="location-button"> Current </button>
+
+</div>
+
+</div>
+		
+<!--Style it later in CSS.. There's a website in W3School that teaches you how to di it
+row current-info
+col city-current-info
+col more-detailed-info
+-->
+
+<div id="current-info">
+<div class="row">
+
+    <!--Mke all the text in the following two columns responsive...
+-->
+  
+    <div class="col" id="city-current-info">
+        <!--Dont know if leave the sm or no.. sm is to automaticaly put them one on top of each other when resizing them.. 
+-->
+
+        <h2 class="city">
+            Nashville
+        </h2>
+
+        <p class="current-time-weather">
+           <span class="current-day-and-time"> Sunday 08:00pm </span> 
+            <br>
+           <span id="description">Cloudy </span>  <i class="fas fa-cloud-moon"></i><!--Add icon later-->
+        </p>
+
+        <h2 class="current-temperture">
+						<span id="tempe"> 21 </span>  <strong id="celsius">°C</strong> |<div id="farenheit"> ℉ </div>
+        </h2>
+
+    </div>
+
+    <div class="col" id="more-detailed-info">
+        
+        <span id="precipitation"> Precipitation: 3% </span>
+        <br>
+        <span id="humidity"> Humidity: 91% </span>
+        <br>
+        <span id="wind"> Wind: 5km/hr </span>
+        <br>
+        <span id="sunrise"> Sunrise: 6:50 AM </span>
+        <br>
+        <span id="sunset"> Sunset: 6:17 PM </span>
+    </div>
+</div>
+
+</div>
+
+<div class="detailed-information">
+    <h2 class="weather-throughout-the-day">
+Temperature
+    </h2>
+    <hr>
+<div id="row-detailed-information">
+<div class="row">
+    <div class="col">
+        9 PM
+    </div>
+
+    <div class="col">
+        12 AM
+    </div>
+
+    <div class="col">
+        3 AM
+    </div>
+
+    <div class="col">
+        6 AM
+    </div>
+
+    <div class="col">
+        9 AM
+    </div>
+    <div class="col">
+        12 PM
+    </div>
+       
+    <div class="col">
+        3 PM
+    </div>
+
+    <div class="col">
+        6 PM
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun-rain"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-moon"></i>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+      21°
+    </div>
+
+    <div class="col">
+        19°
+    </div>
+
+    <div class="col">
+        18°
+    </div>
+
+    <div class="col">
+        18°
+    </div>
+
+    <div class="col">
+        19°
+    </div>
+
+    <div class="col">
+        23°
+    </div>
+
+    <div class="col">
+        27°
+    </div>
+
+    <div class="col">
+        27°
+    </div>
+</div>
+</div>
+</div>
+
+
+<div class="five-days-forecast">
+    <h2 class="forecast-title">
+        Five Days Forecast
+    </h2>
+    <hr>
+<div id="row-forecast">
+<div class="row">
+    <div class="col">
+        SUN 
+    </div>
+
+    <div class="col">
+        MON
+    </div>
+
+    <div class="col">
+        TUES
+    </div>
+
+    <div class="col">
+        WED
+    </div>
+
+    <div class="col">
+        THU
+    </div>
+
+    <div class="col">
+        FRI
+    </div>
+       
+    <div class="col">
+        SAT
+    </div>
+
+    <div class="col">
+        SUN
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun-rain"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun"></i>
+    </div>
+
+    <div class="col">
+        <i class="fas fa-cloud-sun"></i>
+    </div>
+</div>
+
+
+<div class="row" id="smaller-numbers">
+    <div class="col">
+      23°|17°
+    </div>
+
+    <div class="col">
+        28°|9°
+    </div>
+
+    <div class="col">
+        22°|8°
+    </div>
+
+    <div class="col">
+        26°|14°
+    </div>
+
+    <div class="col">
+        23°|6°
+    </div>
+
+    <div class="col">
+        14°|4°
+    </div>
+
+    <div class="col">
+        17°|8°
+    </div>
+
+    <div class="col">
+        19°|8°
+    </div>
+</div>
+</div>
+</div>
+  
+<script src="src/index.js"></script>
+</body>
+</html>
