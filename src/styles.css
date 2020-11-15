@@ -3,7 +3,7 @@ hr {
   }
   
   .most-external-border {
-    margin: 18%;
+    margin: 10% 15% 2% 15%;
     border: 2px solid #c3aed6;
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
   }
@@ -182,13 +182,29 @@ hr {
     color: #faf0af;
   }
   
-  /*div[class*="col"] {
-    background: blue;
-  }*/
+ 
+  #link-github{
+    /*text-align: center;*/
+    margin: 0% 15%;
+    font-size: 1vw;
+  }
+  #link-github a {
   
+    color: #8675a9;
+    text-decoration: none;
+  }
+
+  #link-github a:hover {
+    color: #3b2e5a;
+    text-decoration: underline;
+  }
   @media (max-width: 768px) {
     /* For mobile phones: */
     div[class*="col"] {
       width: 50%;
     }
   }
+
+   /*div[class*="col"] {
+    background: blue;
+  }*/
