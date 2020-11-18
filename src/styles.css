@@ -101,7 +101,8 @@ hr {
   }
   
   #farenheit {
-    display: inline;
+    color: #8675a9;
+    text-decoration: none;
   }
   #more-detailed-info {
     margin: 5%;
