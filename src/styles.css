@@ -92,6 +92,10 @@ hr {
     font-family: "Nanum Gothic", sans-serif;
     font-family: "Old Standard TT", serif;
   }
+
+  #description {
+    text-transform: capitalize;
+  }
   
   .current-temperture {
     font-size: 2vw;

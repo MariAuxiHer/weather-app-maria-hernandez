@@ -36,7 +36,7 @@ function formatDate(dateFunc) {
     let temperatureHtml = document.querySelector("#tempe");
     temperatureHtml.innerHTML = temperature;
   
-    let description = response.data.weather[0].main;
+    let description = response.data.weather[0].description;
     let descriptionHtml = document.querySelector("#description");
     descriptionHtml.innerHTML = `${description}`;
   
@@ -90,7 +90,7 @@ function formatDate(dateFunc) {
     let temperatureHtml = document.querySelector("#tempe");
     temperatureHtml.innerHTML = temperature;
   
-    let description = response.data.weather[0].main;
+    let description = response.data.weather[0].description;
     let descriptionHtml = document.querySelector("#description");
     descriptionHtml.innerHTML = `${description}`;
   
