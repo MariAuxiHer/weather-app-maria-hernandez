@@ -32,7 +32,7 @@ function formatDate(dateFunc) {
   //Feature 1
   function displayTemperature(response) {
     //console.log(response.data.main.temp);
-    let temperature = response.data.main.temp;
+    let temperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
     temperatureHtml.innerHTML = temperature;
   
@@ -86,7 +86,7 @@ function formatDate(dateFunc) {
     let enterCity = document.querySelector(".city");
     enterCity.innerHTML = `You are in ${currentPlace}`;
   
-    let temperature = response.data.main.temp;
+    let temperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
     temperatureHtml.innerHTML = temperature;
   
