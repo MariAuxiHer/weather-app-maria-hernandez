@@ -49,7 +49,7 @@ function formatDate(dateFunc) {
     let humidityHtml = document.querySelector("#humidity");
     humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   
-    let wind = response.data.wind.speed;
+    let wind = Math.round(response.data.wind.speed);
     let windHtml = document.querySelector("#wind");
     windHtml.innerHTML = `Wind: ${wind}km/hr`;
   
@@ -103,7 +103,7 @@ function formatDate(dateFunc) {
     let humidityHtml = document.querySelector("#humidity");
     humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   
-    let wind = response.data.wind.speed;
+    let wind = Math.round(response.data.wind.speed);
     let windHtml = document.querySelector("#wind");
     windHtml.innerHTML = `Wind: ${wind}km/hr`;
   
