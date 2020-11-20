@@ -32,6 +32,15 @@ function formatDate(dateFunc) {
   //Feature 1
   function displayTemperature(response) {
     //console.log(response.data.main.temp);
+
+    let iconWeather = response.data.weather[0].icon;
+    console.log(iconWeather);
+    let iconHtml = document.querySelector("#icon");
+    iconHtml.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
+  );
+
     let temperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
     temperatureHtml.innerHTML = temperature;
@@ -85,6 +94,14 @@ function formatDate(dateFunc) {
     let currentPlace = response.data.name;
     let enterCity = document.querySelector(".city");
     enterCity.innerHTML = `You are in ${currentPlace}`;
+
+    let iconWeather = response.data.weather[0].icon;
+    console.log(iconWeather);
+    let iconHtml = document.querySelector("#icon");
+    iconHtml.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
+  );
   
     let temperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");

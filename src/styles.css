@@ -97,6 +97,10 @@ hr {
   #description {
     text-transform: capitalize;
   }
+
+  #icon {
+    width: 35%;
+  }
   
   .current-temperture {
     font-size: 2vw;
