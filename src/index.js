@@ -33,14 +33,6 @@ function formatDate(dateFunc) {
   function displayTemperature(response) {
     //console.log(response.data.main.temp);
 
-    let iconWeather = response.data.weather[0].icon;
-    console.log(iconWeather);
-    let iconHtml = document.querySelector("#icon");
-    iconHtml.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
-  );
-
     let temperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
     temperatureHtml.innerHTML = temperature;
@@ -49,6 +41,17 @@ function formatDate(dateFunc) {
     let descriptionHtml = document.querySelector("#description");
     descriptionHtml.innerHTML = `${description}`;
   
+    let iconWeather = response.data.weather[0].icon;
+    let iconHtml = document.querySelector("#icon");
+    iconHtml.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
+  );
+  iconHtml.setAttribute(
+    "alt",
+    description
+  );
+
     //let precipitation = response.data.main.precipitation;
     //console.log(response.data);
     //let precipitationHtml = document.querySelector("#precipitation");
@@ -94,14 +97,6 @@ function formatDate(dateFunc) {
     let currentPlace = response.data.name;
     let enterCity = document.querySelector(".city");
     enterCity.innerHTML = `You are in ${currentPlace}`;
-
-    let iconWeather = response.data.weather[0].icon;
-    console.log(iconWeather);
-    let iconHtml = document.querySelector("#icon");
-    iconHtml.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
-  );
   
     let temperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
@@ -110,6 +105,17 @@ function formatDate(dateFunc) {
     let description = response.data.weather[0].description;
     let descriptionHtml = document.querySelector("#description");
     descriptionHtml.innerHTML = `${description}`;
+
+    let iconWeather = response.data.weather[0].icon;
+    let iconHtml = document.querySelector("#icon");
+    iconHtml.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
+  );
+  iconHtml.setAttribute(
+    "alt",
+    description
+  );
   
     //let precipitation = response.data.main.precipitation;
     //console.log(response.data);
