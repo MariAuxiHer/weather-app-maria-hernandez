@@ -17,8 +17,8 @@ hr {
   }
   
   .fa-city {
-    margin: 10% 4% 0% 40%;
-    font-size: 200%;
+    margin: 25% 4% 0% 70%;
+    font-size: 2.5vw;
     color: #8675a9;
   }
   /*.col-8 {
@@ -34,35 +34,57 @@ hr {
   
   #enter-city {
     margin: 0% 0% 0% 20%;
-    width: 40%;
+    width: 50%;
     padding: 8px;
     border: 2px solid #8675a9;
+    border-radius: 5%;
     font-size: 1.2vw;
+    color: #826ea8;
   }
   
   input[type="search"]:focus {
-    border: 3px solid #555;
+    outline: 2px solid #c3aed6;
+    border-radius: 5%;
+    background: #e3d8ee;
   }
   
   #search-button {
     /*margin: 2% 5% 0% 25%;*/
-    margin: 0% 0% 0% 2%;
-    width: 28%;
+    margin: 0% 0% 0% 5%;
+    width: 20%;
     padding: 8px 12px;
-    border: 1px solid #8675a9;
+    border: 2px solid #8675a9;
+    border-radius: 8%;
     background: #c3aed6;
-    color: #3b2e5a;
-    font-size: 1.2vw;
+    color: #826ea8;
+    font-size: 1.1vw;
     font-weight: bold;
   }
   
+  input[type="submit"]:focus {
+    outline: 2px solid #c3aed6;
+    background: #d4bceb;
+  }
+  
   #location-button {
-    font-size: 1.2vw;
+    margin: 0% 0% 0% 10%;
+    font-size: 1.1vw;
     padding: 8px 12px;
-    border: 1px solid #8675a9;
+    border: 2px solid #8675a9;
+    border-radius: 8%;
     background: #c3aed6;
-    color: #3b2e5a;
+    color: #826ea8;
     font-weight: bold;
+  }
+  
+  #location-button:hover {
+    outline: none;
+    background: #e3d8ee;
+  }
+  
+  #location-button:focus {
+    outline: none;
+    background: #d4bceb;
   }
   
   #current-info {
