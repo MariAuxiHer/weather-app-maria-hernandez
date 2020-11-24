@@ -90,7 +90,7 @@ hr {
   #current-info {
     margin: 30px 20px 20px;
     border: 2px solid #8675a9;
-    border-radius: 5px;
+    border-radius: 5px; /* I think that is better to change all the border-radius to percentage instead of pixels for responsivness... maybe */
   }
   
   #city-current-info {
@@ -129,6 +129,14 @@ hr {
     margin: 2% 0% 5%;
     color: #8675a9;
     font-family: "Old Standard TT", serif;
+  }
+  #celsius {
+    color: #8675a9;
+    text-decoration: none;
+  }
+  
+  #city-current-info .active {
+    color: #3b2e5a;
   }
   
   #farenheit {

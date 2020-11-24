@@ -30,12 +30,43 @@ function formatDate(dateFunc) {
   time.innerHTML = formatDate(currentTime);
   
   //Feature 1
+  //Convert from Celsius to Farenheit
+
+  let celsiusTemperature = null;
+
+function displayCelsius(event) {
+  event.preventDefault();
+  //console.log(`The celsius teperature is ${celsiusTemperature}`);
+  let celsius = document.querySelector("#tempe");
+  celsius.innerHTML = celsiusTemperature;
+  celsiusDegree.classList.add("active");
+  farenheitDegree.classList.remove("active");
+}
+
+let celsiusDegree = document.querySelector("#celsius");
+celsiusDegree.addEventListener("click", displayCelsius);
+
+function convertToFarenheit(event) {
+  event.preventDefault();
+  //console.log(`The celsius teperature is ${celsiusTemperature}`);
+  let fahr = Math.round((celsiusTemperature * 9) / 5 + 32);
+  let farenh = document.querySelector("#tempe");
+  farenh.innerHTML = fahr;
+  farenheitDegree.classList.add("active");
+  celsiusDegree.classList.remove("active");
+}
+
+let farenheitDegree = document.querySelector("#farenheit");
+farenheitDegree.addEventListener("click", convertToFarenheit);
+  
+//Get API and change inner HTML
+
   function displayTemperature(response) {
     //console.log(response.data.main.temp);
 
-    let temperature = Math.round(response.data.main.temp);
+    celsiusTemperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
-    temperatureHtml.innerHTML = temperature;
+    temperatureHtml.innerHTML = celsiusTemperature;
   
     let description = response.data.weather[0].description;
     let descriptionHtml = document.querySelector("#description");
@@ -98,9 +129,9 @@ function formatDate(dateFunc) {
     let enterCity = document.querySelector(".city");
     enterCity.innerHTML = `You are in ${currentPlace}`;
   
-    let temperature = Math.round(response.data.main.temp);
+    celsiusTemperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
-    temperatureHtml.innerHTML = temperature;
+    temperatureHtml.innerHTML = celsiusTemperature;
   
     let description = response.data.weather[0].description;
     let descriptionHtml = document.querySelector("#description");
@@ -156,4 +187,4 @@ function formatDate(dateFunc) {
   
   let locationButton = document.querySelector("#location-button");
   locationButton.addEventListener("click", getLocation);
-  
+
