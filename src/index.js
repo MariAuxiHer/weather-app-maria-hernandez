@@ -103,7 +103,7 @@ function readForecast(response) {
     let iconHtml = document.querySelector("#icon");
     iconHtml.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
+    `https://openweathermap.org/img/wn/${iconWeather}@2x.png`
   );
   iconHtml.setAttribute(
     "alt",
@@ -180,7 +180,7 @@ function readForecast(response) {
     let iconHtml = document.querySelector("#icon");
     iconHtml.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${iconWeather}@2x.png`
+    `https://openweathermap.org/img/wn/${iconWeather}@2x.png`
   );
   iconHtml.setAttribute(
     "alt",
