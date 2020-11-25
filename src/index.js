@@ -61,6 +61,33 @@ farenheitDegree.addEventListener("click", convertToFarenheit);
   
 //Get API and change inner HTML
 
+//Forecast 
+
+function readForecast(response) {
+  //Get days
+  console.log(response);
+  let dt = null;
+  for (let index = 0; index < 8; index++) {
+    dt = response.data.daily[index].dt;
+    console.log(dt);
+
+    //Convert dt to days
+    var allDays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+
+    let day = new Date(dt * 1000); // to get the DateTime.
+    let dayName = allDays[day.getDay()]; // It will give day index, and based on index we can get day name from the array.
+    console.log(dayName);
+  }
+}
+
   function displayTemperature(response) {
     //console.log(response.data.main.temp);
 
@@ -105,6 +132,18 @@ farenheitDegree.addEventListener("click", convertToFarenheit);
     sunsetHtml.innerHTML = `Sunset: ${sunset}`;
   
     //Figure out later what means the numbers in Sunrise and Sunset, and how to add precipitation.
+
+    //Forecast
+  let lon = response.data.coord.lon;
+  let lat = response.data.coord.lat;
+  console.log(lon);
+  console.log(lat);
+
+  let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(readForecast);
+
   }
   
   function changeCityName(event) {
