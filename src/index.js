@@ -1,3 +1,7 @@
+let lon = null;
+let lat = null;
+let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
+
 function formatDate(dateFunc) {
     //Feature #1
   
@@ -28,6 +32,37 @@ function formatDate(dateFunc) {
   
   let time = document.querySelector(".current-day-and-time");
   time.innerHTML = formatDate(currentTime);
+
+  function convertDtToHours(dt) {
+    
+    let day = new Date(dt * 1000); 
+    let dayHour = day.getUTCHours();
+    let dayMinutes = day.getUTCMinutes();
+    if (dayHour < 10) {
+      dayHour = `0${dayHour}`;
+    } else {
+      dayHour = `${dayHour}`;
+    }
+  
+    if (dayMinutes < 10) {
+      dayMinutes = `0${dayMinutes}`;
+    } else {
+      dayMinutes = `${dayMinutes}`;
+    }
+  
+    let timeMinutesHour = `${dayHour}:${dayMinutes}`;
+    return timeMinutesHour;
+  
+  }
+
+  function convertDtToDays(dt) {
+    var allDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  
+    let day = new Date(dt * 1000); // to get the DateTime.
+    let dayName = allDays[day.getDay()]; // It will give day index, and based on index we can get day name from the array.
+    console.log(dayName);
+    return dayName;
+  }
   
   //Feature 1
   //Convert from Celsius to Farenheit
@@ -64,28 +99,30 @@ farenheitDegree.addEventListener("click", convertToFarenheit);
 //Forecast 
 
 function readForecast(response) {
-  //Get days
-  console.log(response);
-  let dt = null;
+  let forecastHtml = document.querySelector("#forecast");
+  forecastHtml.innerHTML = null;
+  let forecast = null;
+
   for (let index = 0; index < 8; index++) {
-    dt = response.data.daily[index].dt;
-    console.log(dt);
+    forecast = response.data.daily[index];
+    let dt = forecast.dt + response.data.timezone_offset;
+    let day = convertDtToDays(dt);
+    let icon = forecast.weather[0].icon;
+    let min = Math.round(forecast.temp.min);
+    let max = Math.round(forecast.temp.max);
 
-    //Convert dt to days
-    var allDays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-
-    let day = new Date(dt * 1000); // to get the DateTime.
-    let dayName = allDays[day.getDay()]; // It will give day index, and based on index we can get day name from the array.
-    console.log(dayName);
-  }
+    forecastHtml.innerHTML += `
+  <div class="col">
+  <span> ${day} </span>
+  <br/>
+  <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
+  <br/>
+  <div class="degree">
+  <span class="min-max"> ${max}° </span>|<span class="min-max"> ${min}° </span>
+  </div>
+  </div>
+  `;
+}
 }
 
   function displayTemperature(response) {
@@ -123,19 +160,21 @@ function readForecast(response) {
     let windHtml = document.querySelector("#wind");
     windHtml.innerHTML = `Wind: ${wind}km/hr`;
   
-    let sunrise = response.data.sys.sunrise;
+    let sunriseAPI = response.data.sys.sunrise + response.data.timezone;
+    let sunrise = convertDtToHours(sunriseAPI);
     let sunriseHtml = document.querySelector("#sunrise");
     sunriseHtml.innerHTML = `Sunrise: ${sunrise}`;
   
-    let sunset = response.data.sys.sunset;
+    let sunsetAPI = response.data.sys.sunset + response.data.timezone;
+    let sunset = convertDtToHours(sunsetAPI);
     let sunsetHtml = document.querySelector("#sunset");
     sunsetHtml.innerHTML = `Sunset: ${sunset}`;
   
     //Figure out later what means the numbers in Sunrise and Sunset, and how to add precipitation.
 
-    //Forecast
-  let lon = response.data.coord.lon;
-  let lat = response.data.coord.lat;
+  //Forecast
+  lon = response.data.coord.lon;
+  lat = response.data.coord.lat;
   console.log(lon);
   console.log(lat);
 
@@ -164,6 +203,7 @@ function readForecast(response) {
   
   //Bonus Feature
   function displayCurrentLocation(response) {
+    console.log(lon,lat);
     let currentPlace = response.data.name;
     let enterCity = document.querySelector(".city");
     enterCity.innerHTML = `You are in ${currentPlace}`;
@@ -200,19 +240,24 @@ function readForecast(response) {
     let windHtml = document.querySelector("#wind");
     windHtml.innerHTML = `Wind: ${wind}km/hr`;
   
-    let sunrise = response.data.sys.sunrise;
+    let sunriseAPI = response.data.sys.sunrise + response.data.timezone;
+    let sunrise = convertDtToHours(sunriseAPI);
     let sunriseHtml = document.querySelector("#sunrise");
     sunriseHtml.innerHTML = `Sunrise: ${sunrise}`;
   
-    let sunset = response.data.sys.sunset;
+    let sunsetAPI = response.data.sys.sunset + response.data.timezone;
+    let sunset = convertDtToHours(sunsetAPI);
     let sunsetHtml = document.querySelector("#sunset");
     sunsetHtml.innerHTML = `Sunset: ${sunset}`;
+
+    let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlForecast).then(readForecast);
   }
   
   function getApiLocation(position) {
     //console.log(position.coords.latitude);
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
     let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     //console.log(apiUrl);
