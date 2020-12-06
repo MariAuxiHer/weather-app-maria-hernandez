@@ -1,5 +1,8 @@
 let lon = null;
 let lat = null;
+let celsiusTemperature = null;
+let min = null;
+let max = null;
 let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
 
 function formatDate(dateFunc) {
@@ -67,7 +70,6 @@ function formatDate(dateFunc) {
   //Feature 1
   //Convert from Celsius to Farenheit
 
-  let celsiusTemperature = null;
 
 function displayCelsius(event) {
   event.preventDefault();
@@ -97,6 +99,37 @@ farenheitDegree.addEventListener("click", convertToFarenheit);
 //Get API and change inner HTML
 
 //Forecast 
+
+function displayTempEveryThreeHours(response) {
+  let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
+  detailedInfoTitle.innerHTML = "Temperature";
+  console.log(response.data);
+  let forecastHtml = document.querySelector("#detailed-information");
+  forecastHtml.innerHTML = null;
+  let detailedInformation = null;
+
+  for (let index = 0; index < 8; index++) {
+    detailedInformation = response.data.list[index];
+    let dt = detailedInformation.dt + response.data.city.timezone;
+    let hour = convertDtToHours(dt);
+    let icon = detailedInformation.weather[0].icon;
+    min = Math.round(detailedInformation.main.temp_min);
+    max = Math.round(detailedInformation.main.temp_max);
+    console.log(`min and max are ${min}, ${max}`);
+
+    forecastHtml.innerHTML += `
+  <div class="col">
+  <span> ${hour} </span>
+  <br/>
+  <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
+  <br/>
+  <div class="degree">
+  <span class="min-max minimum"> ${max}° </span>|<span class="min-max maximum"> ${min}° </span>
+  </div>
+  </div>
+  `;
+  }
+}
 
 function readForecast(response) {
   let forecastHtml = document.querySelector("#forecast");
@@ -178,10 +211,11 @@ function readForecast(response) {
   console.log(lon);
   console.log(lat);
 
-  let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(readForecast);
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlForecast).then(readForecast);
+
+  let apiUrlThreeHoursTemp = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
 
   }
   
@@ -252,6 +286,11 @@ function readForecast(response) {
 
     let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
     axios.get(apiUrlForecast).then(readForecast);
+
+    let apiUrlThreeHoursTemp = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrlThreeHoursTemp);
+  axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
   }
   
   function getApiLocation(position) {
