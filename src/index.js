@@ -131,7 +131,7 @@ function displayTempEveryThreeHours(response) {
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
   <br/>
   <div class="degree">
-  <span class="min-max minimum"> ${max}° </span>|<span class="min-max maximum"> ${min}° </span>
+  <span class="smaller-numbers minimum"> ${max}° </span>|<span class="smaller-numbers maximum"> ${min}° </span>
   </div>
   </div>
   `;
@@ -157,10 +157,12 @@ function displayWindEveryThreeHours(response) {
   <div class="col">
   <span> ${hour} </span>
   <br/>
-  <span class="min-max"> ${degree}° </span>
+  <br/>
+  <span> ${degree}° </span>
+  <br/>
   <br/>
   <div class="degree">
-  <span class="min-max"> ${wind}km/hr </span>
+  <span class="smaller-numbers"> ${wind}km/hr </span>
   </div>
   </div>
   `;
@@ -188,7 +190,7 @@ function displayHumidityEveryThreeHours(response) {
   
   <br/>
   <div class="degree">
-  <span class="min-max"> ${humidity}% </span>
+  <span> ${humidity}% </span>
   </div>
   </div>
   `;
@@ -215,7 +217,7 @@ function readForecast(response) {
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
   <br/>
   <div class="degree">
-  <span class="min-max"> ${max}° </span>|<span class="min-max"> ${min}° </span>
+  <span class="smaller-numbers"> ${max}° </span>|<span class="smaller-numbers"> ${min}° </span>
   </div>
   </div>
   `;
@@ -331,7 +333,7 @@ function readForecast(response) {
 
     let currentPlace = response.data.name;
     let enterCity = document.querySelector(".city");
-    enterCity.innerHTML = `You are in <strong> ${currentPlace} </strong>`;
+    enterCity.innerHTML = `You are <br> in <br> <strong> ${currentPlace} </strong>`;
   
     celsiusTemperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");

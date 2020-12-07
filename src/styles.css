@@ -3,13 +3,14 @@ hr {
   }
   
   .most-external-border {
-    margin: 10% 15% 2% 15%;
+    margin: 10% 5% 2% 5%;
     border: 2px solid #c3aed6;
+    border-radius: 5px;
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
   }
   
   .header-main-title {
-    font-size: 2.4vw;
+    font-size: 3.5vw;
     text-align: center;
     padding: 25px 10px 15px;
     font-family: "Courgette", cursive;
@@ -17,8 +18,8 @@ hr {
   }
   
   .fa-city {
-    margin: 25% 4% 0% 70%;
-    font-size: 2.5vw;
+    margin: 10% 4% 0% 100%;
+    font-size: 2.8vw;
     color: #8675a9;
   }
   /*.col-8 {
@@ -49,15 +50,14 @@ hr {
   }
   
   #search-button {
-    /*margin: 2% 5% 0% 25%;*/
-    margin: 0% 0% 0% 5%;
+    margin: 0% 0% 0% 2%;
     width: 20%;
     padding: 8px 12px;
     border: 2px solid #8675a9;
     border-radius: 8%;
     background: #c3aed6;
     color: #826ea8;
-    font-size: 1.1vw;
+    font-size: 1.2vw;
     font-weight: bold;
   }
   
@@ -67,49 +67,49 @@ hr {
   }
   
   #location-button {
-    margin: 0% 0% 0% 10%;
-    font-size: 1.1vw;
-    padding: 8px 12px;
-    border: 2px solid #8675a9;
-    border-radius: 8%;
-    background: #c3aed6;
+    font-size: 3.5vw;
+    margin: 0% 0% 0% 30%;
     color: #826ea8;
-    font-weight: bold;
   }
   
   #location-button:hover {
     outline: none;
-    background: #e3d8ee;
+    color: #e3d8ee;
+    cursor: pointer;
   }
   
   #location-button:focus {
     outline: none;
-    background: #d4bceb;
+    color: #d4bceb;
   }
   
   #current-info {
     margin: 30px 20px 20px;
     border: 2px solid #8675a9;
-    border-radius: 5px; /* I think that is better to change all the border-radius to percentage instead of pixels for responsivness... maybe */
+    background-image: linear-gradient(to top, #a78edb 0%, #f1b8f3 100%);
+    border-radius: 5px;
+    color: #8675a9;
   }
   
   #city-current-info {
-    margin: 5%;
+    margin: 5% 5% 5% 5%;
     border: 2px solid #8675a9;
     border-radius: 48%;
     text-align: center;
+    background-image: linear-gradient(to top, #bdace2 0%, #a893d1 100%);
   }
   
   .city {
-    margin: 5.5% 0% 2%;
-    font-size: 2vw;
-    color: #8675a9;
+    margin: 10% 0% 5%;
+    font-size: 3vw;
+    font-weight: bold;
+    color:  #6f618a;
     font-family: "Old Standard TT", serif;
     text-transform: capitalize;
   }
   
   .current-time-weather {
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     margin-bottom: 0;
     color: #3b2e5a;
     font-family: "Nanum Gothic", sans-serif;
@@ -125,11 +125,13 @@ hr {
   }
   
   .current-temperture {
-    font-size: 2vw;
-    margin: 2% 0% 5%;
-    color: #8675a9;
+    font-size: 3vw;
+    font-weight: bold;
+    color:  #6f618a;
+    margin: 0% 0% 8%;
     font-family: "Old Standard TT", serif;
   }
+
   #celsius {
     color: #8675a9;
     text-decoration: none;
@@ -143,20 +145,25 @@ hr {
     color: #8675a9;
     text-decoration: none;
   }
+
   #more-detailed-info {
-    margin: 5%;
+    margin: 5% 5% 5% 0%;
     border: 2px solid #8675a9;
-    font-size: 1.2vw;
+    font-size: 1.8vw;
     color: #3b2e5a;
     border-radius: 5px;
     padding: 3%;
     font-family: "Nanum Gothic", sans-serif;
     font-family: "Old Standard TT", serif;
+    background-image: linear-gradient(to top, #bdace2 0%, #a893d1 100%);
   }
-
+  
+  .more-detailed-info-center{
+    margin: 0% 7% 5% 0%;
+  }
   .more-detailed-info-buttons {
-    margin: 2% 0% 2% 2%;
-    font-size: 1.1vw;
+    margin: 5% 0% 2% 2%;
+    font-size: 1.8vw;
     padding: 2px 12px;
     border: 2px solid #8675a9;
     border-radius: 8%;
@@ -176,19 +183,22 @@ hr {
   }
   
   .detailed-information {
-    margin: 20px;
+    margin: 30px 20px 20px;
     border: 2px solid #8675a9;
     border-radius: 5px;
-    font-size: 0.9vw;
+    font-size: 1.8vw;
     font-family: "Nanum Gothic", sans-serif;
     font-family: "Old Standard TT", serif;
+    background-image: linear-gradient(to top, #bdace2 0%, #a893d1 100%);
   }
   
+
   .weather-throughout-the-day {
-    font-size: 2vw;
     text-align: center;
-    padding: 1% 0 0.2%;
-    color: #8675a9;
+    padding: 2.5% 0 0.2%;
+    font-size: 2.5vw;
+    font-weight: bold;
+    color:  #6f618a;
     font-family: "Old Standard TT", serif;
   }
   
@@ -198,19 +208,21 @@ hr {
   }
   
   .five-days-forecast {
-    margin: 20px 20px 30px;
+    margin: 30px 20px 30px;
     border: 2px solid #8675a9;
     border-radius: 5px;
-    font-size: 0.9vw;
+    font-size: 1.8vw;
     font-family: "Nanum Gothic", sans-serif;
     font-family: "Old Standard TT", serif;
+    background-image: linear-gradient(to top, #bdace2 0%, #a893d1 100%);
   }
   
   .forecast-title {
-    font-size: 2vw;
     text-align: center;
-    padding: 1% 0 0.2%;
-    color: #8675a9;
+    padding: 2.5% 0 0.2%;
+    font-size: 2.5vw;
+    font-weight: bold;
+    color:  #6f618a;
     font-family: "Old Standard TT", serif;
   }
   
@@ -219,8 +231,8 @@ hr {
     color: #3b2e5a;
   }
   
-  #smaller-numbers {
-    font-size: 0.8vw;
+  .smaller-numbers {
+    font-size: 1.2vw;
   }
   
   .fa-cloud-moon {
