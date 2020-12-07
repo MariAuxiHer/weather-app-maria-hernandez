@@ -5,6 +5,7 @@ let min = null;
 let max = null;
 let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
 
+
 function formatDate(time) {
   //Feature #1
   let dateFunc = new Date(time);
@@ -131,6 +132,63 @@ function displayTempEveryThreeHours(response) {
   }
 }
 
+function displayWindEveryThreeHours(response) {
+  let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
+  detailedInfoTitle.innerHTML = "Wind";
+  console.log(response.data);
+  let forecastHtml = document.querySelector("#detailed-information");
+  forecastHtml.innerHTML = null;
+  let detailedInformation = null;
+
+  for (let index = 0; index < 8; index++) {
+    detailedInformation = response.data.list[index];
+    let dt = detailedInformation.dt + response.data.city.timezone;
+    let hour = convertDtToHours(dt);
+    let degree = detailedInformation.wind.deg;
+    let wind = detailedInformation.wind.speed;
+
+    forecastHtml.innerHTML += `
+  <div class="col">
+  <span> ${hour} </span>
+  <br/>
+  <span class="min-max"> ${degree}° </span>
+  <br/>
+  <div class="degree">
+  <span class="min-max"> ${wind}km/hr </span>
+  </div>
+  </div>
+  `;
+  }
+}
+
+function displayHumidityEveryThreeHours(response) {
+  let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
+  detailedInfoTitle.innerHTML = "Humidity";
+  console.log(response.data);
+  let forecastHtml = document.querySelector("#detailed-information");
+  forecastHtml.innerHTML = null;
+  let detailedInformation = null;
+
+  for (let index = 0; index < 8; index++) {
+    detailedInformation = response.data.list[index];
+    let dt = detailedInformation.dt + response.data.city.timezone;
+    let hour = convertDtToHours(dt);
+    let humidity = detailedInformation.main.humidity;
+
+    forecastHtml.innerHTML += `
+  <div class="col">
+  <span> ${hour} </span>
+  <br/>
+  
+  <br/>
+  <div class="degree">
+  <span class="min-max"> ${humidity}% </span>
+  </div>
+  </div>
+  `;
+  }
+}
+
 function readForecast(response) {
   let forecastHtml = document.querySelector("#forecast");
   forecastHtml.innerHTML = null;
@@ -236,8 +294,38 @@ function readForecast(response) {
     //console.log(apiUrl);
     axios.get(apiUrl).then(displayTemperature);
   }
+
+  function searchButtonWind(event) {
+    event.preventDefault();
+    let apiUrlThreeHoursWind = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlThreeHoursWind).then(displayWindEveryThreeHours);
+  }
+  
+  function searchButtonHumidity(event) {
+    event.preventDefault();
+    let apiUrlThreeHoursHumidity = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlThreeHoursHumidity).then(displayHumidityEveryThreeHours);
+  }
+  
+  function searchButtonTemperature(event) {
+    event.preventDefault();
+    let apiUrlThreeHoursTemp = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
+  }
+
+//Event Listeners
+
   let changeCity = document.querySelector("#submit-city");
   changeCity.addEventListener("submit", changeCityName);
+
+  let windClick = document.querySelector("#wind-button");
+  windClick.addEventListener("click", searchButtonWind);
+
+  let humidityClick = document.querySelector("#humidity-button");
+  humidityClick.addEventListener("click", searchButtonHumidity);
+
+  let temperatureClick = document.querySelector("#temperature-button");
+  temperatureClick.addEventListener("click", searchButtonTemperature);
   
   //Bonus Feature
   function displayCurrentLocation(response) {
@@ -292,9 +380,7 @@ function readForecast(response) {
     axios.get(apiUrlForecast).then(readForecast);
 
     let apiUrlThreeHoursTemp = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-
-  console.log(apiUrlThreeHoursTemp);
-  axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
+    axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
   }
   
   function getApiLocation(position) {

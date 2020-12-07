@@ -153,6 +153,27 @@ hr {
     font-family: "Nanum Gothic", sans-serif;
     font-family: "Old Standard TT", serif;
   }
+
+  .more-detailed-info-buttons {
+    margin: 2% 0% 2% 2%;
+    font-size: 1.1vw;
+    padding: 2px 12px;
+    border: 2px solid #8675a9;
+    border-radius: 8%;
+    background: #c3aed6;
+    color: #826ea8;
+    font-weight: bold;
+  }
+  
+  .more-detailed-info-buttons:hover {
+    outline: none;
+    background: #e3d8ee;
+  }
+  
+  .more-detailed-info-buttons:focus {
+    outline: none;
+    background: #d4bceb;
+  }
   
   .detailed-information {
     margin: 20px;
