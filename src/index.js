@@ -217,8 +217,7 @@ function readForecast(response) {
 }
 
   function displayTemperature(response) {
-    //console.log(response.data.main.temp);
-
+    
     let date = response.data.dt + response.data.timezone;
     let time = document.querySelector(".current-day-and-time");
     time.innerHTML = formatDate(date * 1000);
@@ -242,11 +241,6 @@ function readForecast(response) {
     description
   );
 
-    //let precipitation = response.data.main.precipitation;
-    //console.log(response.data);
-    //let precipitationHtml = document.querySelector("#precipitation");
-    //precipitationHtml.innerHTML = `Precipitation: ${precipitation}%`;
-  
     let humidity = response.data.main.humidity;
     let humidityHtml = document.querySelector("#humidity");
     humidityHtml.innerHTML = `Humidity: ${humidity}%`;
@@ -329,7 +323,11 @@ function readForecast(response) {
   
   //Bonus Feature
   function displayCurrentLocation(response) {
-    console.log(lon,lat);
+
+    let date = response.data.dt + response.data.timezone;
+    let time = document.querySelector(".current-day-and-time");
+    time.innerHTML = formatDate(date * 1000);
+
     let currentPlace = response.data.name;
     let enterCity = document.querySelector(".city");
     enterCity.innerHTML = `You are in ${currentPlace}`;
