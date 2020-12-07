@@ -5,31 +5,31 @@ let min = null;
 let max = null;
 let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
 
-function formatDate(dateFunc) {
-    //Feature #1
-  
-    let daysFunc = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-    let dayFunc = daysFunc[dateFunc.getDay()];
-  
-    let dateHour = dateFunc.getHours();
-    if (dateHour < 10) {
-      dateHour = `0${dateHour}`;
-    }
-    let dateMinutes = dateFunc.getMinutes();
-    if (dateMinutes < 10) {
-      dateMinutes = `0${dateMinutes}`;
-    }
-    let currentDateFunc = ` ${dayFunc}, ${dateHour}:${dateMinutes}`;
-    return currentDateFunc;
+function formatDate(time) {
+  //Feature #1
+  let dateFunc = new Date(time);
+  let daysFunc = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let dayFunc = daysFunc[dateFunc.getUTCDay()];
+
+  let dateHour = dateFunc.getUTCHours();
+  if (dateHour < 10) {
+    dateHour = `0${dateHour}`;
   }
+  let dateMinutes = dateFunc.getUTCMinutes();
+  if (dateMinutes < 10) {
+    dateMinutes = `0${dateMinutes}`;
+  }
+  let currentDateFunc = `Last Updated: ${dayFunc}, ${dateHour}:${dateMinutes}`;
+  return currentDateFunc;
+}
   
   let currentTime = new Date();
   
@@ -160,6 +160,10 @@ function readForecast(response) {
 
   function displayTemperature(response) {
     //console.log(response.data.main.temp);
+
+    let date = response.data.dt + response.data.timezone;
+    let time = document.querySelector(".current-day-and-time");
+    time.innerHTML = formatDate(date * 1000);
 
     celsiusTemperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
