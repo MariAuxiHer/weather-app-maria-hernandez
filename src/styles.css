@@ -82,6 +82,27 @@ hr {
     outline: none;
     color: #d4bceb;
   }
+
+  .city-per-continent-buttons {
+    margin: 0% 0%7% 25%;
+    font-size: 1.1vw;
+    padding: 5px 12px;
+    border: 2px solid #8675a9;
+    border-radius: 8%;
+    color: hsl(271, 34%, 75%);
+    background: #8675a9;
+    font-weight: bold;
+  }
+  
+  .city-per-continent-buttons:hover {
+    outline: none;
+    background: #e3d8ee;
+  }
+  
+  .city-per-continent-buttons:focus {
+    outline: none;
+    background: #d4bceb;
+  }
   
   #current-info {
     margin: 30px 20px 20px;
@@ -232,34 +253,14 @@ hr {
   }
   
   .smaller-numbers {
-    font-size: 1.2vw;
-  }
-  
-  .fa-cloud-moon {
-    color: #cbeaed;
-  }
-  
-  .fa-moon {
-    color: #cbeaed;
-  }
-  
-  .fa-cloud-sun {
-    color: #ffffdd;
-  }
-  
-  .fa-cloud-sun-rain {
-    color: #cbeaed;
-  }
-  
-  .fa-sun {
-    color: #faf0af;
+    font-size: 1vw;
   }
   
  
   #link-github{
     /*text-align: center;*/
-    margin: 0% 15%;
-    font-size: 1vw;
+    margin: 0% 5%;
+    font-size: 1.5vw;
   }
   #link-github a {
   

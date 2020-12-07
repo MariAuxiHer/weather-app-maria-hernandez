@@ -310,6 +310,63 @@ function readForecast(response) {
     axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
   }
 
+  //Call API for every city
+function caracas(event) {
+  event.preventDefault();
+  //let city = "congo";
+  let city = "Caracas";
+  console.log(city);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+ 
+}
+
+function nashville(event) {
+  event.preventDefault();
+  //let city = "congo";
+  let city = "Nashville";
+  console.log(city);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function nairobi(event) {
+  event.preventDefault();
+  //let city = "congo";
+  let city = "Nairobi";
+  console.log(city);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function tokyo(event) {
+  event.preventDefault();
+  //let city = "congo";
+  let city = "Tokyo";
+  console.log(city);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function madrid(event) {
+  event.preventDefault();
+  //let city = "congo";
+  let city = "Madrid";
+  console.log(city);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function fiji(event) {
+  event.preventDefault();
+  //let city = "congo";
+  let city = "Fiji";
+  console.log(city);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+
 //Event Listeners
 
   let changeCity = document.querySelector("#submit-city");
@@ -323,6 +380,26 @@ function readForecast(response) {
 
   let temperatureClick = document.querySelector("#temperature-button");
   temperatureClick.addEventListener("click", searchButtonTemperature);
+
+  //Event Listeners for specific cities.
+
+  let caracasClick = document.querySelector("#Caracas");
+  caracasClick.addEventListener("click", caracas);
+
+  let nashvilleClick = document.querySelector("#Nashville");
+  nashvilleClick.addEventListener("click", nashville);
+
+  let nairobiClick = document.querySelector("#Nairobi");
+  nairobiClick.addEventListener("click", nairobi);
+
+  let tokyoClick = document.querySelector("#Tokyo");
+  tokyoClick.addEventListener("click", tokyo);
+
+  let madridClick = document.querySelector("#Madrid");
+  madridClick.addEventListener("click", madrid);
+
+  let fijiClick = document.querySelector("#Fiji");
+  fijiClick.addEventListener("click", fiji);
   
   //Bonus Feature
   function displayCurrentLocation(response) {
