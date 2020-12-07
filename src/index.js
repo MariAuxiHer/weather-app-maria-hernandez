@@ -242,14 +242,7 @@ function readForecast(response) {
   
     let iconWeather = response.data.weather[0].icon;
     let iconHtml = document.querySelector("#icon");
-    iconHtml.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${iconWeather}@2x.png`
-  );
-  iconHtml.setAttribute(
-    "alt",
-    description
-  );
+    iconHtml.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconWeather}@2x.png" alt="weather-icon" width = "50%">` ;
 
     let humidity = response.data.main.humidity;
     let humidityHtml = document.querySelector("#humidity");
@@ -338,7 +331,7 @@ function readForecast(response) {
 
     let currentPlace = response.data.name;
     let enterCity = document.querySelector(".city");
-    enterCity.innerHTML = `You are in ${currentPlace}`;
+    enterCity.innerHTML = `You are in <strong> ${currentPlace} </strong>`;
   
     celsiusTemperature = Math.round(response.data.main.temp);
     let temperatureHtml = document.querySelector("#tempe");
@@ -350,19 +343,7 @@ function readForecast(response) {
 
     let iconWeather = response.data.weather[0].icon;
     let iconHtml = document.querySelector("#icon");
-    iconHtml.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${iconWeather}@2x.png`
-  );
-  iconHtml.setAttribute(
-    "alt",
-    description
-  );
-  
-    //let precipitation = response.data.main.precipitation;
-    //console.log(response.data);
-    //let precipitationHtml = document.querySelector("#precipitation");
-    //precipitationHtml.innerHTML = `Precipitation: ${precipitation}%`;
+    iconHtml.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconWeather}@2x.png" alt="weather-icon" width = "50%">` ;
   
     let humidity = response.data.main.humidity;
     let humidityHtml = document.querySelector("#humidity");
