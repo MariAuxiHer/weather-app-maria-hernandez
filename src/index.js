@@ -1,9 +1,15 @@
+//Global variables
 let lon = null;
 let lat = null;
 let celsiusTemperature = null;
 let min = null;
 let max = null;
 let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
+
+//Add Paris as the default city.
+let city = "Paris";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayTemperature);
 
 
 function formatDate(time) {
@@ -217,6 +223,10 @@ function readForecast(response) {
 }
 
   function displayTemperature(response) {
+
+    let enterCity = document.querySelector(".city");
+    let city = response.data.name;
+    enterCity.innerHTML = city;
     
     let date = response.data.dt + response.data.timezone;
     let time = document.querySelector(".current-day-and-time");
@@ -278,9 +288,7 @@ function readForecast(response) {
   function changeCityName(event) {
     event.preventDefault();
     let currentCity = document.querySelector("#enter-city");
-    let enterCity = document.querySelector(".city");
     let city = currentCity.value;
-    enterCity.innerHTML = city;
   
     let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
