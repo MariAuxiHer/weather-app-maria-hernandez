@@ -23,8 +23,6 @@
                 </h1>
 
           
-<hr>
-
 
 <div class="row">
     <div class="col-1">
@@ -44,7 +42,7 @@
 
 </div>
 
-<div class="col-3">
+<div class="col-sm-3 col-1">
 
 	<i class="fas fa-street-view"  id="location-button"> </i>
 
@@ -52,8 +50,8 @@
 
 </div>
 
-       
-<hr>
+<br>
+
 <div class="container" id="container-specific-cities">
 
 <div class="row extra-space">
@@ -106,28 +104,45 @@
         </p>
 
         <h2 class="current-temperture">
-						<span id="tempe"> </span>  <a href="#" id="celsius">°C</a> |<a href="#" id="farenheit">℉</a>
+						<span id="tempe"></span>  <span id="celsius-farenheit-smaller-size"><a href="#" id="celsius">°C</a> |<a href="#" id="farenheit">℉</a></span>
         </h2>
 
     </div>
 
     <div class="col" id="more-detailed-info">
-        
-        <br>
+      
+        <div class="container">
+            <div class="row" id="more-detailed-info-center">
+
+              <div class="col-12">
         <span id="humidity"> Humidity: 91% </span>
-        <br>
+              </div>
+
+              <div class="col-12">
         <span id="wind"> Wind: 5km/hr </span>
-        <br>
+              </div>
+
+              <div class="col-12">
         <span id="sunrise"> Sunrise: 6:50 AM </span>
-        <br>
+              </div>
+
+              <div class="col-12">
         <span id="sunset"> Sunset: 6:17 PM </span>
-
-        <br>
-
-        <button class="more-detailed-info-buttons" id="temperature-button"> Temperature </button> <button class="more-detailed-info-buttons" id="wind-button"> Wind </button>
+              </div>
         
-        <button class="more-detailed-info-buttons center" id="humidity-button"> Humidity </button>
+                <div class="col-12">
+        <button class="more-detailed-info-buttons" id="temperature-button"> Temperature </button> 
+                </div>
 
+                <div class="col-12">
+        <button class="more-detailed-info-buttons" id="wind-button"> Wind </button>
+                </div>
+
+                <div class="col-12">
+        <button class="more-detailed-info-buttons" id="humidity-button"> Humidity </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -137,7 +152,6 @@
     <h2 class="weather-throughout-the-day">
 Temperature
     </h2>
-    <hr>
 
 <div class="container">
 <div class="row" id="detailed-information">
@@ -154,7 +168,6 @@ Temperature
     <h2 class="forecast-title">
         Five Days Forecast
     </h2>
-    <hr>
 <div class="container">
 <div class="row" id="forecast">
    
@@ -163,11 +176,14 @@ Temperature
 
 </div>
 
+<span id="Weather-app">Weather-App</span>
 </div>
 
-<div>
-<span id="link-github"> <a href="https://github.com/MariAuxiHer/weather-app-maria-hernandez" target="_blank">Open source-code</a> by Maria Hernandez</span>
+
+    <span id="link-github"> <a href="https://github.com/MariAuxiHer/weather-app-maria-hernandez" target="_blank">Open source-code</a> by Maria Hernandez</span>
+
 </div>
+
 <script src="src/index.js"></script>
 </body>
 </html>

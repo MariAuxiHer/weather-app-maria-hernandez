@@ -15,6 +15,26 @@ axios.get(apiUrl).then(displayTemperature);
 function formatDate(time) {
   //Feature #1
   let dateFunc = new Date(time);
+
+  let monthFunc = [
+    "January", 
+    "February",
+    "March", 
+    "April", 
+    "May", 
+    "June", 
+    "July", 
+    "August", 
+    "September", 
+    "October", 
+    "November", 
+    "December"
+  ];
+
+  let month = monthFunc[dateFunc.getUTCMonth()];
+
+  let date = dateFunc.getUTCDate();
+
   let daysFunc = [
     "Sunday",
     "Monday",
@@ -34,7 +54,7 @@ function formatDate(time) {
   if (dateMinutes < 10) {
     dateMinutes = `0${dateMinutes}`;
   }
-  let currentDateFunc = `Last Updated: ${dayFunc}, ${dateHour}:${dateMinutes}`;
+  let currentDateFunc = `Last Updated: <br/> ${month}, ${date}. <br/> ${dayFunc}, ${dateHour}:${dateMinutes}`;
   return currentDateFunc;
 }
   
@@ -123,6 +143,7 @@ function displayTempEveryThreeHours(response) {
 
     forecastHtml.innerHTML += `
     <div class="col-xl-2 col-2" id="col-temp">
+  <br/>
   <span> ${hour} </span>
   <br/>
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
@@ -151,6 +172,7 @@ function displayWindEveryThreeHours(response) {
 
     forecastHtml.innerHTML += `
   <div class="col-xl-2 col-2">
+  <br/>
   <span> ${hour} </span>
   <br/>
   <br/>
@@ -180,6 +202,7 @@ function displayHumidityEveryThreeHours(response) {
 
     forecastHtml.innerHTML += `
     <div class="col-xl-2 col-2">
+  <br/>
   <span> ${hour} </span>
   <br/>
   
@@ -207,6 +230,7 @@ function readForecast(response) {
 
     forecastHtml.innerHTML += `
   <div class="col-xl-1.5 col-2">
+  <br/>
   <span> ${day} </span>
   <br/>
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
