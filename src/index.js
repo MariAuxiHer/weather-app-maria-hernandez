@@ -125,13 +125,13 @@ function displayTempEveryThreeHours(response) {
     console.log(`min and max are ${min}, ${max}`);
 
     forecastHtml.innerHTML += `
-  <div class="col">
+  <div class="col-xl-2 col-sm-2" id="col-temp">
   <span> ${hour} </span>
   <br/>
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
   <br/>
   <div class="degree">
-  <span class="smaller-numbers minimum"> ${max}° </span>|<span class="smaller-numbers maximum"> ${min}° </span>
+  <span class="smaller-numbers minimum"> ${max}°</span>|<span class="smaller-numbers maximum">${min}° </span>
   </div>
   </div>
   `;
@@ -154,7 +154,7 @@ function displayWindEveryThreeHours(response) {
     let wind = detailedInformation.wind.speed;
 
     forecastHtml.innerHTML += `
-  <div class="col">
+  <div class="col-xl-2 col-sm-2">
   <span> ${hour} </span>
   <br/>
   <br/>
@@ -184,7 +184,7 @@ function displayHumidityEveryThreeHours(response) {
     let humidity = detailedInformation.main.humidity;
 
     forecastHtml.innerHTML += `
-  <div class="col">
+    <div class="col-xl-2 col-sm-2">
   <span> ${hour} </span>
   <br/>
   
@@ -211,13 +211,13 @@ function readForecast(response) {
     let max = Math.round(forecast.temp.max);
 
     forecastHtml.innerHTML += `
-  <div class="col">
+  <div class="col-xl-2 col-sm-2">
   <span> ${day} </span>
   <br/>
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
   <br/>
   <div class="degree">
-  <span class="smaller-numbers"> ${max}° </span>|<span class="smaller-numbers"> ${min}° </span>
+  <span class="smaller-numbers"> ${max}°</span>|<span class="smaller-numbers">${min}° </span>
   </div>
   </div>
   `;

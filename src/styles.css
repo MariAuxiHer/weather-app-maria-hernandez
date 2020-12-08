@@ -3,7 +3,7 @@ hr {
   }
   
   .most-external-border {
-    margin: 10% 5% 2% 5%;
+    margin: 10% 3% 2% 3%;
     border: 2px solid #c3aed6;
     border-radius: 5px;
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
@@ -18,7 +18,7 @@ hr {
   }
   
   .fa-city {
-    margin: 10% 4% 0% 100%;
+    margin: 10% 4% 0% 120%;
     font-size: 2.8vw;
     color: #8675a9;
   }
@@ -68,7 +68,7 @@ hr {
   
   #location-button {
     font-size: 3.5vw;
-    margin: 0% 0% 0% 30%;
+    margin: 0% 0% 0% 10%;
     color: #826ea8;
   }
   
@@ -84,7 +84,7 @@ hr {
   }
 
   .city-per-continent-buttons {
-    margin: 0% 0%7% 25%;
+    margin: 0% 0% 7% 25%;
     font-size: 1.1vw;
     padding: 5px 12px;
     border: 2px solid #8675a9;
@@ -105,7 +105,7 @@ hr {
   }
   
   #current-info {
-    margin: 30px 20px 20px;
+    margin: 10px 20px 20px;
     border: 2px solid #8675a9;
     background-image: linear-gradient(to top, #a78edb 0%, #f1b8f3 100%);
     border-radius: 5px;
@@ -223,10 +223,7 @@ hr {
     font-family: "Old Standard TT", serif;
   }
   
-  #row-detailed-information {
-    padding: 0 1% 2% 3%;
-    color: #3b2e5a;
-  }
+  
   
   .five-days-forecast {
     margin: 30px 20px 30px;
@@ -253,13 +250,13 @@ hr {
   }
   
   .smaller-numbers {
-    font-size: 1vw;
+    font-size: 1.2vw;
   }
   
  
   #link-github{
     /*text-align: center;*/
-    margin: 0% 5%;
+    margin: 0% 3%;
     font-size: 1.5vw;
   }
   #link-github a {
@@ -272,13 +269,12 @@ hr {
     color: #3b2e5a;
     text-decoration: underline;
   }
-  @media (max-width: 768px) {
-    /* For mobile phones: */
-    div[class*="col"] {
-      width: 50%;
+ /* @media(max-width:768px) {
+    /* For mobile phones: 
+    .extra-space .col-2{
+      width: 25%;
     }
-  }
-
-   /*div[class*="col"] {
-    background: blue;
+    
   }*/
+
+  
