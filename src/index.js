@@ -70,7 +70,6 @@ function formatDate(time) {
   
     let day = new Date(dt * 1000); // to get the DateTime.
     let dayName = allDays[day.getDay()]; // It will give day index, and based on index we can get day name from the array.
-    console.log(dayName);
     return dayName;
   }
   
@@ -110,7 +109,6 @@ farenheitDegree.addEventListener("click", convertToFarenheit);
 function displayTempEveryThreeHours(response) {
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Temperature";
-  console.log(response.data);
   let forecastHtml = document.querySelector("#detailed-information");
   forecastHtml.innerHTML = null;
   let detailedInformation = null;
@@ -122,7 +120,6 @@ function displayTempEveryThreeHours(response) {
     let icon = detailedInformation.weather[0].icon;
     min = Math.round(detailedInformation.main.temp_min);
     max = Math.round(detailedInformation.main.temp_max);
-    console.log(`min and max are ${min}, ${max}`);
 
     forecastHtml.innerHTML += `
     <div class="col-xl-2 col-2" id="col-temp">
@@ -141,7 +138,6 @@ function displayTempEveryThreeHours(response) {
 function displayWindEveryThreeHours(response) {
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Wind";
-  console.log(response.data);
   let forecastHtml = document.querySelector("#detailed-information");
   forecastHtml.innerHTML = null;
   let detailedInformation = null;
@@ -172,7 +168,6 @@ function displayWindEveryThreeHours(response) {
 function displayHumidityEveryThreeHours(response) {
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Humidity";
-  console.log(response.data);
   let forecastHtml = document.querySelector("#detailed-information");
   forecastHtml.innerHTML = null;
   let detailedInformation = null;
@@ -269,8 +264,6 @@ function readForecast(response) {
   //Forecast
   lon = response.data.coord.lon;
   lat = response.data.coord.lat;
-  console.log(lon);
-  console.log(lat);
 
   let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
   axios.get(apiUrlForecast).then(readForecast);
@@ -313,9 +306,7 @@ function readForecast(response) {
   //Call API for every city
 function caracas(event) {
   event.preventDefault();
-  //let city = "congo";
   let city = "Caracas";
-  console.log(city);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
  
@@ -323,45 +314,35 @@ function caracas(event) {
 
 function nashville(event) {
   event.preventDefault();
-  //let city = "congo";
   let city = "Nashville";
-  console.log(city);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
 function nairobi(event) {
   event.preventDefault();
-  //let city = "congo";
   let city = "Nairobi";
-  console.log(city);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
 function tokyo(event) {
   event.preventDefault();
-  //let city = "congo";
   let city = "Tokyo";
-  console.log(city);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
 function madrid(event) {
   event.preventDefault();
-  //let city = "congo";
   let city = "Madrid";
-  console.log(city);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
 function fiji(event) {
   event.preventDefault();
-  //let city = "congo";
   let city = "Fiji";
-  console.log(city);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
@@ -450,12 +431,11 @@ function fiji(event) {
   }
   
   function getApiLocation(position) {
-    //console.log(position.coords.latitude);
+
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-    //console.log(apiUrl);
     axios.get(apiUrl).then(displayCurrentLocation);
   }
   
