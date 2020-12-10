@@ -94,33 +94,85 @@ function formatDate(time) {
   }
   
   //Feature 1
+  
   //Convert from Celsius to Farenheit
 
 
-function displayCelsius(event) {
-  event.preventDefault();
-  //console.log(`The celsius teperature is ${celsiusTemperature}`);
-  let celsius = document.querySelector("#tempe");
-  celsius.innerHTML = celsiusTemperature;
-  celsiusDegree.classList.add("active");
-  farenheitDegree.classList.remove("active");
-}
+  function converttoCelsius(fahr) {
+    let celsius = Math.round((fahr - 32) * (5 / 9));
+    return celsius;
+  }
+  
+  function converttoFahrenheit(celsius) {
+    let fahr = Math.round((celsius * 9) / 5 + 32);
+    return fahr;
+  }
+  
+  function displayCelsius(event) {
+    event.preventDefault();
+    let celsius = document.querySelector("#tempe");
+    celsius.innerHTML = celsiusTemperature;
 
-let celsiusDegree = document.querySelector("#celsius");
-celsiusDegree.addEventListener("click", displayCelsius);
+  
+    let minFahr = document.querySelectorAll(".minimum");
+    minFahr.forEach(function (min) {
+      let minFahrHtml = parseInt(min.innerHTML, 10);
+      let minCelsHtml = converttoCelsius(minFahrHtml);
+      console.log(`The min Cels is: ${minCelsHtml}`);
+      min.innerHTML = minCelsHtml;
+    });
+  
+    let maxFahr = document.querySelectorAll(".maximum");
+    maxFahr.forEach(function (max) {
+      let maxFahrHtml = parseInt(max.innerHTML, 10);
+      let maxCelsHtml = converttoCelsius(maxFahrHtml);
+      console.log(`The min Cels is: ${maxCelsHtml}`);
+      max.innerHTML = maxCelsHtml;
+    });
+  
+    celsiusDegree.removeEventListener("click", displayCelsius);
+    fahrenheitDegree.addEventListener("click", displayFahrenheit);
+  
+    celsiusDegree.classList.add("active");
+    fahrenheitDegree.classList.remove("active");
+  }
+  
+  let celsiusDegree = document.querySelector("#celsius");
+  celsiusDegree.addEventListener("click", displayCelsius);
+  
+  function displayFahrenheit(event) {
+    event.preventDefault();
+    let fahr = converttoFahrenheit(celsiusTemperature);
+    let fahrenh = document.querySelector("#tempe");
+    fahrenh.innerHTML = fahr;
+  
+    let minCels = document.querySelectorAll(".minimum");
+    minCels.forEach(function (min) {
+      let minCelsHtml = parseInt(min.innerHTML, 10);
+      let minFahrHtml = converttoFahrenheit(minCelsHtml);
+      console.log(`The min FAHR is: ${minFahrHtml}`);
+      min.innerHTML = minFahrHtml;
+    });
+  
+    let maxCels = document.querySelectorAll(".maximum");
+    maxCels.forEach(function (max) {
+      let maxCelsHtml = parseInt(max.innerHTML, 10);
+      let maxFahrHtml = converttoFahrenheit(maxCelsHtml);
+      console.log(`The min FAHR is: ${maxFahrHtml}`);
+      max.innerHTML = maxFahrHtml;
+    });
+  
+    celsiusDegree.addEventListener("click", displayCelsius); //Add eventListener because I removed it before in displayCelsius, so I have to add it again.
+    fahrenheitDegree.removeEventListener("click", displayFahrenheit); //Remove event listener so that it doesn't keep overriding the html with the convertToFarenheit function.
+  
 
-function convertToFarenheit(event) {
-  event.preventDefault();
-  //console.log(`The celsius teperature is ${celsiusTemperature}`);
-  let fahr = Math.round((celsiusTemperature * 9) / 5 + 32);
-  let farenh = document.querySelector("#tempe");
-  farenh.innerHTML = fahr;
-  farenheitDegree.classList.add("active");
-  celsiusDegree.classList.remove("active");
-}
-
-let farenheitDegree = document.querySelector("#farenheit");
-farenheitDegree.addEventListener("click", convertToFarenheit);
+    fahrenheitDegree.classList.add("active");
+    celsiusDegree.classList.remove("active");
+  }
+  
+  let fahrenheitDegree = document.querySelector("#fahrenheit");
+  fahrenheitDegree.addEventListener("click", displayFahrenheit);
+  
   
 //Get API and change inner HTML
 
@@ -149,7 +201,7 @@ function displayTempEveryThreeHours(response) {
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
   <br/>
   <div class="degree">
-  <span class="smaller-numbers minimum"> ${max}°</span>|<span class="smaller-numbers maximum">${min}° </span>
+  <span class="smaller-numbers maximum"> ${max}°</span>|<span class="smaller-numbers minimum">${min}° </span>
   </div>
   </div>
   `;
@@ -236,7 +288,7 @@ function readForecast(response) {
   <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon" width = "70%">
   <br/>
   <div class="degree">
-  <span class="smaller-numbers"> ${max}°</span>|<span class="smaller-numbers">${min}° </span>
+  <span class="smaller-numbers maximum"> ${max}°</span>|<span class="smaller-numbers minimum">${min}° </span>
   </div>
   </div>
   `;
