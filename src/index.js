@@ -94,9 +94,12 @@ function formatDate(time) {
   }
   
   //Feature 1
-  
-  //Convert from Celsius to Farenheit
 
+  //Convert from Celsius to Farenheit
+let celsiusDegree = document.querySelector("#celsius");
+
+let fahrenheitDegree = document.querySelector("#fahrenheit");
+fahrenheitDegree.addEventListener("click", displayFahrenheit);
 
   function converttoCelsius(fahr) {
     let celsius = Math.round((fahr - 32) * (5 / 9));
@@ -137,9 +140,6 @@ function formatDate(time) {
     fahrenheitDegree.classList.remove("active");
   }
   
-  let celsiusDegree = document.querySelector("#celsius");
-  celsiusDegree.addEventListener("click", displayCelsius);
-  
   function displayFahrenheit(event) {
     event.preventDefault();
     let fahr = converttoFahrenheit(celsiusTemperature);
@@ -170,8 +170,6 @@ function formatDate(time) {
     celsiusDegree.classList.remove("active");
   }
   
-  let fahrenheitDegree = document.querySelector("#fahrenheit");
-  fahrenheitDegree.addEventListener("click", displayFahrenheit);
   
   
 //Get API and change inner HTML
@@ -522,4 +520,25 @@ function fiji(event) {
   
   let locationButton = document.querySelector("#location-button");
   locationButton.addEventListener("click", getLocation);
+
+  let eventlistenerCelsiusAndFarenheit = [
+    caracasClick,
+    nashvilleClick,
+    nairobiClick,
+    tokyoClick,
+    madridClick,
+    fijiClick,
+    locationButton,
+    document.querySelector("#search-button") //Everything okay... except with Caracas.. for some reason... Verify what's going on here... I think I may have to either remove the weird active class created in caracas or make another function for the search engine (one by themselves)
+  ];
+  
+  //DO STH SIMILAR AS THIS WHEN ADDING THE KMH AND MPH ....not sure yet how to add that to the celsius class.... I think this is a case of prompt two envent listeners to the same element..or sth like that..
+  eventlistenerCelsiusAndFarenheit.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      celsiusDegree.classList.add("active");
+      fahrenheitDegree.classList.remove("active");
+      celsiusDegree.removeEventListener("click", displayCelsius);
+      fahrenheitDegree.addEventListener("click", displayFahrenheit);
+    });
+  });
 

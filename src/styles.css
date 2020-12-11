@@ -141,12 +141,16 @@ hr {
     width: 35%;
   }
   
-  .current-temperture {
+  #current-temperture {
     font-size: 5vw;
     font-weight: bold;
     color:  #7862a3;
     margin: 0% 0% 8%;
     font-family: "Old Standard TT", serif;
+  }
+
+  #current-temperture .active {
+    color: #3b2e5a;
   }
 
   #celsius-farenheit-smaller-size{
@@ -156,10 +160,6 @@ hr {
   #celsius {
     color: #7862a3;
     text-decoration: none;
-  }
-  
-  #city-current-info .active {
-    color: #3b2e5a;
   }
   
   #fahrenheit {
