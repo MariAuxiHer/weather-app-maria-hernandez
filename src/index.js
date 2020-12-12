@@ -4,6 +4,7 @@ let lat = null;
 let celsiusTemperature = null;
 let min = null;
 let max = null;
+let wind = null;
 let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
 
 //Add Paris as the default city.
@@ -116,6 +117,8 @@ fahrenheitDegree.addEventListener("click", displayFahrenheit);
     let celsius = document.querySelector("#tempe");
     celsius.innerHTML = celsiusTemperature;
 
+    let windCurrent = document.querySelector("#wind");
+    windCurrent.innerHTML = `Wind: ${wind}km/hr`;
   
     let minFahr = document.querySelectorAll(".minimum");
     minFahr.forEach(function (min) {
@@ -142,9 +145,14 @@ fahrenheitDegree.addEventListener("click", displayFahrenheit);
   
   function displayFahrenheit(event) {
     event.preventDefault();
+
     let fahr = converttoFahrenheit(celsiusTemperature);
     let fahrenh = document.querySelector("#tempe");
     fahrenh.innerHTML = fahr;
+
+    let windCurrentMph = convertToMph(wind);
+    let windCurrent = document.querySelector("#wind");
+    windCurrent.innerHTML = `Wind: ${windCurrentMph}mph`;
   
     let minCels = document.querySelectorAll(".minimum");
     minCels.forEach(function (min) {
@@ -187,6 +195,7 @@ let celsiusClickWind = document.querySelector("#celsius");
 
 function displayKmh(event) {
   event.preventDefault();
+
   let windmph = document.querySelectorAll(".wind");
   windmph.forEach(function (wind) {
     let windmphHtml = parseInt(wind.innerHTML, 10);
@@ -202,6 +211,7 @@ function displayKmh(event) {
 
 function displayMph(event) {
   event.preventDefault();
+
   let windkmh = document.querySelectorAll(".wind");
   windkmh.forEach(function (wind) {
     let windkmhHtml = parseInt(wind.innerHTML, 10);
@@ -224,6 +234,9 @@ function displayTempEveryThreeHours(response) {
 
   let temperatureHtml = document.querySelector("#tempe");
   temperatureHtml.innerHTML = celsiusTemperature;
+
+  let windCurrent = document.querySelector("#wind");
+  windCurrent.innerHTML = `Wind: ${wind}km/hr`;
 
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Temperature";
@@ -258,6 +271,9 @@ function displayWindEveryThreeHours(response) {
 
   let temperatureHtml = document.querySelector("#tempe");
   temperatureHtml.innerHTML = celsiusTemperature;
+
+  let windCurrent = document.querySelector("#wind");
+  windCurrent.innerHTML = `Wind: ${wind}km/hr`;
 
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Wind";
@@ -378,7 +394,7 @@ function readForecast(response) {
     let humidityHtml = document.querySelector("#humidity");
     humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   
-    let wind = Math.round(response.data.wind.speed);
+    wind = Math.round(response.data.wind.speed);
     let windHtml = document.querySelector("#wind");
     windHtml.innerHTML = `Wind: ${wind}km/hr`;
   
@@ -556,7 +572,7 @@ function fiji(event) {
     let humidityHtml = document.querySelector("#humidity");
     humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   
-    let wind = Math.round(response.data.wind.speed);
+    wind = Math.round(response.data.wind.speed);
     let windHtml = document.querySelector("#wind");
     windHtml.innerHTML = `Wind: ${wind}km/hr`;
   
