@@ -95,7 +95,7 @@ function formatDate(time) {
   
   //Feature 1
 
-  //Convert from Celsius to Farenheit
+  //Convert from Celsius to Farenheit and the other way around
 let celsiusDegree = document.querySelector("#celsius");
 
 let fahrenheitDegree = document.querySelector("#fahrenheit");
@@ -121,16 +121,16 @@ fahrenheitDegree.addEventListener("click", displayFahrenheit);
     minFahr.forEach(function (min) {
       let minFahrHtml = parseInt(min.innerHTML, 10);
       let minCelsHtml = converttoCelsius(minFahrHtml);
-      console.log(`The min Cels is: ${minCelsHtml}`);
-      min.innerHTML = minCelsHtml;
+      //console.log(`The min Cels is: ${minCelsHtml}`);
+      min.innerHTML = `${minCelsHtml}°`;
     });
   
     let maxFahr = document.querySelectorAll(".maximum");
     maxFahr.forEach(function (max) {
       let maxFahrHtml = parseInt(max.innerHTML, 10);
       let maxCelsHtml = converttoCelsius(maxFahrHtml);
-      console.log(`The min Cels is: ${maxCelsHtml}`);
-      max.innerHTML = maxCelsHtml;
+      //console.log(`The max Cels is: ${maxCelsHtml}`);
+      max.innerHTML = `${maxCelsHtml}°`;
     });
   
     celsiusDegree.removeEventListener("click", displayCelsius);
@@ -150,16 +150,16 @@ fahrenheitDegree.addEventListener("click", displayFahrenheit);
     minCels.forEach(function (min) {
       let minCelsHtml = parseInt(min.innerHTML, 10);
       let minFahrHtml = converttoFahrenheit(minCelsHtml);
-      console.log(`The min FAHR is: ${minFahrHtml}`);
-      min.innerHTML = minFahrHtml;
+      //console.log(`The min FAHR is: ${minFahrHtml}`);
+      min.innerHTML = `${minFahrHtml}°`;
     });
   
     let maxCels = document.querySelectorAll(".maximum");
     maxCels.forEach(function (max) {
       let maxCelsHtml = parseInt(max.innerHTML, 10);
       let maxFahrHtml = converttoFahrenheit(maxCelsHtml);
-      console.log(`The min FAHR is: ${maxFahrHtml}`);
-      max.innerHTML = maxFahrHtml;
+      //console.log(`The max FAHR is: ${maxFahrHtml}`);
+      max.innerHTML = `${maxFahrHtml}°`;
     });
   
     celsiusDegree.addEventListener("click", displayCelsius); //Add eventListener because I removed it before in displayCelsius, so I have to add it again.
@@ -169,6 +169,50 @@ fahrenheitDegree.addEventListener("click", displayFahrenheit);
     fahrenheitDegree.classList.add("active");
     celsiusDegree.classList.remove("active");
   }
+
+
+//Convert from kmh to mph and the other way around
+function convertToKmHr(mph) {
+  let kmh = Math.round(mph / 0.6213727);
+  return kmh;
+}
+
+function convertToMph(kmh) {
+  let mph = Math.round(kmh * 0.6213727);
+  return mph;
+}
+
+let fahrenheitClickWind = document.querySelector("#fahrenheit");
+let celsiusClickWind = document.querySelector("#celsius");
+
+function displayKmh(event) {
+  event.preventDefault();
+  let windmph = document.querySelectorAll(".wind");
+  windmph.forEach(function (wind) {
+    let windmphHtml = parseInt(wind.innerHTML, 10);
+    //console.log(`The MPH is: ${windmphHtml}`);
+    let windkmhHtml = convertToKmHr(windmphHtml);
+    //console.log(`The KMH is: ${windkmhHtml}`);
+    wind.innerHTML = `${windkmhHtml} km/h`;
+  });
+
+  celsiusClickWind.removeEventListener("click", displayKmh);
+  fahrenheitClickWind.addEventListener("click", displayMph);
+}
+
+function displayMph(event) {
+  event.preventDefault();
+  let windkmh = document.querySelectorAll(".wind");
+  windkmh.forEach(function (wind) {
+    let windkmhHtml = parseInt(wind.innerHTML, 10);
+    //console.log(`The KMH is: ${windkmhHtml}`);
+    let windmphHtml = convertToMph(windkmhHtml);
+    //console.log(`The MPH is: ${windmphHtml}`);
+    wind.innerHTML = `${windmphHtml} mph`;
+  });
+  celsiusClickWind.addEventListener("click", displayKmh);
+  fahrenheitClickWind.removeEventListener("click", displayMph);
+}
   
   
   
@@ -177,6 +221,10 @@ fahrenheitDegree.addEventListener("click", displayFahrenheit);
 //Forecast 
 
 function displayTempEveryThreeHours(response) {
+
+  let temperatureHtml = document.querySelector("#tempe");
+  temperatureHtml.innerHTML = celsiusTemperature;
+
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Temperature";
   let forecastHtml = document.querySelector("#detailed-information");
@@ -207,6 +255,10 @@ function displayTempEveryThreeHours(response) {
 }
 
 function displayWindEveryThreeHours(response) {
+
+  let temperatureHtml = document.querySelector("#tempe");
+  temperatureHtml.innerHTML = celsiusTemperature;
+
   let detailedInfoTitle = document.querySelector(".weather-throughout-the-day");
   detailedInfoTitle.innerHTML = "Wind";
   let forecastHtml = document.querySelector("#detailed-information");
@@ -218,7 +270,7 @@ function displayWindEveryThreeHours(response) {
     let dt = detailedInformation.dt + response.data.city.timezone;
     let hour = convertDtToHours(dt);
     let degree = detailedInformation.wind.deg;
-    let wind = detailedInformation.wind.speed;
+    let wind = Math.round(detailedInformation.wind.speed);
 
     forecastHtml.innerHTML += `
   <div class="col-xl-2 col-2">
@@ -230,11 +282,15 @@ function displayWindEveryThreeHours(response) {
   <br/>
   <br/>
   <div class="degree">
-  <span class="smaller-numbers"> ${wind}km/hr </span>
+  <span class="smaller-numbers wind"> ${wind}km/hr </span>
   </div>
   </div>
   `;
   }
+
+  fahrenheitClickWind.addEventListener("click", displayMph);
+  celsiusClickWind.removeEventListener("click", displayKmh);
+
 }
 
 function displayHumidityEveryThreeHours(response) {
@@ -291,6 +347,9 @@ function readForecast(response) {
   </div>
   `;
 }
+
+  celsiusDegree.removeEventListener("click", displayCelsius);
+  fahrenheitDegree.addEventListener("click", displayFahrenheit);
 }
 
   function displayTemperature(response) {
@@ -361,8 +420,15 @@ function readForecast(response) {
 
   function searchButtonWind(event) {
     event.preventDefault();
+
+    celsiusDegree.classList.add("active");
+    fahrenheitDegree.classList.remove("active");
+
     let apiUrlThreeHoursWind = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrlThreeHoursWind).then(displayWindEveryThreeHours);
+
+    let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlForecast).then(readForecast);
   }
   
   function searchButtonHumidity(event) {
@@ -373,8 +439,15 @@ function readForecast(response) {
   
   function searchButtonTemperature(event) {
     event.preventDefault();
+
+    celsiusDegree.classList.add("active");
+    fahrenheitDegree.classList.remove("active");
+
     let apiUrlThreeHoursTemp = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrlThreeHoursTemp).then(displayTempEveryThreeHours);
+
+    let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlForecast).then(readForecast);
   }
 
   //Call API for every city
