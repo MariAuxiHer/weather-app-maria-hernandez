@@ -408,7 +408,6 @@ function readForecast(response) {
     let sunsetHtml = document.querySelector("#sunset");
     sunsetHtml.innerHTML = `Sunset: ${sunset}`;
   
-    //Figure out later what means the numbers in Sunrise and Sunset, and how to add precipitation.
 
   //Forecast
   lon = response.data.coord.lon;
@@ -618,12 +617,13 @@ function fiji(event) {
     madridClick,
     fijiClick,
     locationButton,
-    document.querySelector("#search-button") //Everything okay... except with Caracas.. for some reason... Verify what's going on here... I think I may have to either remove the weird active class created in caracas or make another function for the search engine (one by themselves)
+    document.querySelector("#search-button") 
   ];
   
-  //DO STH SIMILAR AS THIS WHEN ADDING THE KMH AND MPH ....not sure yet how to add that to the celsius class.... I think this is a case of prompt two envent listeners to the same element..or sth like that..
+  
   eventlistenerCelsiusAndFarenheit.forEach((item) => {
     item.addEventListener("click", (event) => {
+      event.preventDefault();
       celsiusDegree.classList.add("active");
       fahrenheitDegree.classList.remove("active");
       celsiusDegree.removeEventListener("click", displayCelsius);
