@@ -427,7 +427,7 @@ function readForecast(response) {
     let city = currentCity.value;
   
     let apiKey = "ac3c02e9439b2a5f701addd7d8527168";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   
     //console.log(apiUrl);
     axios.get(apiUrl).then(displayTemperature);
